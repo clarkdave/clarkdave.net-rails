@@ -1,0 +1,18 @@
+
+<section id='content' class='blog'>
+	<% @posts.each do |post| %>
+		<div class='blog-entry'>
+			<aside>
+				<div class='date'>
+					<div class='month'><%= post.created_at.to_s(:month_short) %></div>
+					<div class='day'><%= post.created_at.to_s(:day) %></div>
+				</div>
+			</aside>
+			<article>
+				<h3><%= link_to post.title, post %></h3>
+				<p><%= post.snippet %></p>
+			</article>
+		</div>
+	<% end %>
+</section>
+

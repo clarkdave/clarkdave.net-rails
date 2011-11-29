@@ -1,0 +1,19 @@
+<% if notice %><p id="notice"><%= notice %></p><% end %>
+
+<section id='content' class='blog'>
+	<div class='blog-entry'>
+		<aside>
+			<div class='date'>
+				<div class='month'><%= @post.created_at.to_s(:month_short) %></div>
+				<div class='day'><%= @post.created_at.to_s(:day) %></div>
+			</div>
+			<% if logged_in? %>
+			<a class='edit' href='<%= edit_post_path @post %>'></a>
+			<% end %>
+		</aside>
+		<article>
+			<h3><%= @post.title %></h3>
+			<p><%= @post.content %></p>
+		</article>
+	</div>
+</section>

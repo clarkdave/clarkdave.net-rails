@@ -1,0 +1,15 @@
+<section id='content' class='log-in'>
+	<h3>Sign in</h3>
+
+	<%= form_tag sessions_path do %>
+		<p>
+			<%= label_tag :email %>
+			<%= text_field_tag :email, params[:email] %>
+		</p>
+		<p>
+			<%= label_tag :password %>
+			<%= password_field_tag :password %>
+		</p>
+		<p><%= submit_tag 'Sign in' %></p>
+	<% end %>
+</section>

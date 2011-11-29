@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>clarkdave.net</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz'>
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700'>
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Cabin'>
+	<%= stylesheet_link_tag "application" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+</head>
+<body>
+
+	<section id='page' class='container'>
+		<header>
+			<h1>clarkdave.net</h1>
+			<nav>
+				<ul>
+					<li><%= nav_link 'blog', 'posts' %></li>
+					<li><a href='#'>about</a></li>
+					<li><a href='#'>work</a></li>
+					<li><a href='#'>contact</a></li>
+				</ul>
+			</nav>
+			<% if logged_in? %>
+			<div id='logged-in'>
+				<p>logged in as <%= current_user.email %></p>
+			</div>
+			<% end %>
+		</header>
+
+		<% if notice %><div class="notice"><%= notice %></div><% end %>
+		<% if alert %><div class="alert"><%= alert %></div><% end %>
+
+		<%= yield %>
+
+	</section>
+</body>
+</html>
