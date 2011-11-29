@@ -1,0 +1,41 @@
+<section id='content' class='work'>
+	<div class='work-chrono'>
+		<div class='work-box'>
+
+		</div>
+		<div class='work-box'>
+
+		</div>
+		<div class='work-box'>
+
+		</div>
+		<div class='work-box'>
+
+		</div>
+		<div class='work-box'>
+
+		</div>
+		<div class='work-box'>
+
+		</div>
+		<div class='work-box'>
+
+		</div>
+		<div class='work-box'>
+
+		</div>
+	</div>
+	<div class='work-listing'>
+
+		<h3>My work</h3>
+
+		<% @works.each do |work| %>
+			<div class='work-item'>
+				<div class='picture'></div>
+				<h4><%= work.name %></h4>
+			</div>
+		<% end %>
+	</div>
+</section>
+
+

@@ -1,3 +1,5 @@
+require 'rdiscount'
+
 class Post < ActiveRecord::Base
 
 	validates :user_id, :presence => true
@@ -11,6 +13,16 @@ class Post < ActiveRecord::Base
 
 	def to_param
 		slug
+	end
+
+	# get html for just the snippet (for front page)
+	def html_snippet
+		RDiscount.new(snippet).to_html
+	end
+
+	# get html for both snippet and content together
+	def html_all
+		RDiscount.new(snippet + "\n\n" + content).to_html
 	end
 
 	private

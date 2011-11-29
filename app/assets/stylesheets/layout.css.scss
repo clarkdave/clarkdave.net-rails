@@ -1,3 +1,10 @@
+@mixin box-sizing($sizing: 'border-box') {
+	box-sizing: $sizing;
+	-webkit-box-sizing: $sizing;
+	-moz-box-sizing: $sizing;
+	-ms-box-sizing: $sizing;
+}
+
 body {
 	background: #fff asset-url('layout/background.png', image) repeat;
 	font: 14px/21px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -106,6 +113,10 @@ div#logged-in {
 	padding-left: 85px;
 }
 
+.indented-title {
+	padding-left: 85px;
+}
+
 .blog {
 	
 	.blog-entry {
@@ -153,7 +164,7 @@ div#logged-in {
 
 		article {
 			margin-left: 70px;
-			padding: 0 20px;
+			padding: 0;
 
 			h3 a {
 				text-decoration: none;
@@ -162,11 +173,55 @@ div#logged-in {
 					text-decoration: underline;
 				}
 			}
+
+			h3, h4, h5, p {
+				padding: 0 20px;
+			}
+
+			li {
+				list-style-type: disc;
+				margin: 4px 0 2px 44px;
+			}
+
+			pre {
+				background: #f5f5f5;
+				margin-bottom: 20px;
+				padding: 10px 20px;
+				border-top: 3px dashed #dadada;
+				border-bottom: 3px dashed #dadada;
+			}
+
+			code {
+				font-family: Monaco, ProFont, "Bitstream Vera Sans Mono", "American Typewriter", "Andale Mono", monospace;
+			}
 		}
 	}
 
 	.blog-form {
 		padding-left: 85px;
+
+		label {
+			font-size: 1.1em;
+			margin-bottom: 4px;
+		}
+
+		.field {
+			padding-right: 20px;
+		}
+
+		.title {
+			width: 500px;
+		}
+
+		// form elements
+		.snippet, .contents {
+			width: 100%;
+			@include box-sizing(border-box);
+		}
+
+		.actions {
+			margin-top: 16px;
+		}
 	}
 }
 

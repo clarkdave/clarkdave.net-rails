@@ -10,7 +10,7 @@
 			</aside>
 			<article>
 				<h3><%= link_to post.title, post %></h3>
-				<p><%= post.snippet %></p>
+				<%=raw post.html_snippet %>
 			</article>
 		</div>
 	<% end %>

@@ -1,0 +1,60 @@
+// Place all the styles related to the Works controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.work {
+
+	overflow: auto;
+
+	.work-chrono {
+		width: 70px;
+		float: left;
+
+		.work-box {
+			border: 5px solid #fff;
+			background: #333;
+			height: 44px;
+			width: 44px;
+			-moz-transition-property: opacity;
+			-moz-transition-duration: 0.3s;
+			margin: 0 0 10px 8px;
+			opacity: 0.5;
+			cursor: pointer;
+
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+
+	.work-listing {
+
+		padding-left: 20px;
+
+		h3 {
+			margin-bottom: 15px;
+		}
+
+		overflow: auto;
+	}
+
+	.work-item {
+		width: 415px;
+		height: 300px;
+		float: left;
+		background: #f5f5f5;
+		margin: 0 20px 20px 0;
+
+		.picture {
+			margin: 10px;
+			background: #333;
+			height: 200px;
+		}
+
+		h4 {
+			font-family: 'Yanone Kaffeesatz', sans-serif;
+			font-size: 2em;
+			margin: 10px 0 10px 10px;
+		}
+	}
+}

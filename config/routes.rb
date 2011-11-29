@@ -3,10 +3,13 @@ Clarkdavedotnet::Application.routes.draw do
   get 'login' => 'sessions#new', :as => 'log_in'
   get 'logout' => 'sessions#destroy', :as => 'log_out'
 
+  get 'about' => 'about#index'
+
   #get 'blog', :to => 'posts#index'
   #get 'blog/:id', :to => 'posts#show', :as => 'blog'
 
   resources :blog, :controller => 'posts', :as => 'posts'
+  resources :work, :controller => 'works', :as => 'works'
   resources :users
   resources :sessions
 

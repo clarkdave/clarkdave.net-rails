@@ -1,25 +1,53 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<% if params.key? 'preview' %>
+	<div class='blog-entry' style='margin-bottom: 40px'>
+		<aside>
+			<div class='date'>
+				<div class='month'><%= DateTime.now.to_s(:month_short) %></div>
+				<div class='day'><%= DateTime.now.to_s(:day) %></div>
+			</div>
+		</aside>
+		<article>
+			<h3><%= @post.title.blank? ? 'No title yet' : @post.title %></h3>
+			<%=raw @post.snippet.blank? && @post.content.blank? ? 'No content yet' : @post.html_all %>
+		</article>
+	</div>
 <% end %>
+
+<div class='blog-form'>
+	<h3><%= title %></h3>
+
+	<%= form_for(@post) do |f| %>
+	  <% if @post.errors.any? %>
+		<div id="error_explanation">
+		  <h4>Found <%= pluralize(@post.errors.count, "error") %></h4>
+		  <ul>
+		  <% @post.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		  <% end %>
+		  </ul>
+		</div>
+	  <% end %>
+
+	  <div class="field">
+		<%= f.label :title %>
+		<%= f.text_field :title, :class => 'title' %>
+	  </div>
+	  <div class='field'>
+		<%= f.label :snippet %>
+		<%= f.text_area :snippet, :cols => 30, :class => 'snippet' %>
+	  </div>
+	  <div class="field">
+		<%= f.label :content %>
+		<%= f.text_area :content, :cols => 30, :class => 'contents' %>
+	  </div>
+	  <div class='field'>
+	  	<%= f.label :published, 'Published?' %>
+	  	<%= f.check_box :published %>
+	  </div>
+	  <div class="actions">
+		<%= f.submit %>
+		<%= f.submit 'Preview', :name => 'preview', :remote => true %>
+	  </div>
+	<% end %>
+</div>

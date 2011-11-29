@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @work.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @work.description %>
+</p>
+
+<p>
+  <b>Features:</b>
+  <%= @work.features %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @work.url %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= @work.image %>
+</p>
+
+<p>
+  <b>Thumbnail:</b>
+  <%= @work.thumbnail %>
+</p>
+
+
+<%= link_to 'Edit', edit_work_path(@work) %> |
+<%= link_to 'Back', works_path %>

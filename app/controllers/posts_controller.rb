@@ -48,10 +48,12 @@ class PostsController < ApplicationController
 
 	# POST /posts
 	def create
-		@post = Post.new(params[:post])
+		#@post = Post.new(params[:post])
+		@post = current_user.posts.build(params[:post])
+		preview = params.key? 'preview'
 
 		respond_to do |format|
-			if @post.save
+			if not preview and @post.save
 				format.html { redirect_to @post, notice: 'Post was successfully created.' }
 				format.json { render json: @post, status: :created, location: @post }
 			else
@@ -63,10 +65,11 @@ class PostsController < ApplicationController
 
 	# PUT /posts/1
 	def update
-		@post = Post.find(params[:id])
+		@post = Post.find_by_slug!(params[:id])
+		preview = params.key? 'preview'
 
 		respond_to do |format|
-			if @post.update_attributes(params[:post])
+			if not preview and @post.update_attributes(params[:post])
 				format.html { redirect_to @post, notice: 'Post was successfully updated.' }
 				format.json { head :ok }
 			else
