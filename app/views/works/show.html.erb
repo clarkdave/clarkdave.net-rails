@@ -1,35 +1,28 @@
-<p id="notice"><%= notice %></p>
+<section id='content' class='work'>
+	<div class='work-detail-techs'>
+		<% if logged_in? %>
+			<a class='edit' href='<%= edit_work_path @work %>'></a>
+		<% end %>
+		<div class='dim'>
+			<div class='tech'><span>php</span></div>
+			<div class='tech'><span>mysql</span></div>
+			<div class='tech'><abbr title='Zend PHP Framework'>zend</abbr></div>
+			<div class='tech'><span>jquery</span></div>
+		</div>
+	</div>
+	<div class='work-detail'>
 
-<p>
-  <b>Name:</b>
-  <%= @work.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @work.description %>
-</p>
-
-<p>
-  <b>Features:</b>
-  <%= @work.features %>
-</p>
-
-<p>
-  <b>Url:</b>
-  <%= @work.url %>
-</p>
-
-<p>
-  <b>Image:</b>
-  <%= @work.image %>
-</p>
-
-<p>
-  <b>Thumbnail:</b>
-  <%= @work.thumbnail %>
-</p>
-
-
-<%= link_to 'Edit', edit_work_path(@work) %> |
-<%= link_to 'Back', works_path %>
+		<h3><%= @work.name %></h3>
+		<div class='detail-box'>
+			<a href='#'><div class='picture' style='background-image: url(<%= @work.image.url %>)'></div></a>
+			<div class='status'>
+				<p class='date'><strong>Completed:</strong> 01/12/2010</p>
+				<p class='url'><strong>URL:</strong> http://whatever.com</p>
+			</div>
+			<div class='description'>
+				<%=raw @work.html_description %>
+			</div>
+		</div>
+		
+	</div>
+</section>

@@ -10,6 +10,8 @@ Clarkdavedotnet::Application.routes.draw do
 
   resources :blog, :controller => 'posts', :as => 'posts'
   resources :work, :controller => 'works', :as => 'works'
+  post 'work/:id/create_thumb', :to => 'works#create_thumb'
+
   resources :users
   resources :sessions
 

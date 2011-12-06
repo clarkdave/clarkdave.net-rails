@@ -5,6 +5,12 @@
 	-ms-box-sizing: $sizing;
 }
 
+@mixin box-shadow($type, $x, $y, $spread, $colour) {
+	-moz-box-shadow: $type $x $y $spread $colour;
+	-webkit-box-shadow: $type $x $y $spread $colour;
+	box-shadow: $type $x $y $spread $colour;
+}
+
 body {
 	background: #fff asset-url('layout/background.png', image) repeat;
 	font: 14px/21px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -55,6 +61,8 @@ nav {
 			margin: 0;
 			padding: 18px 17px 8px 17px;
 			text-decoration: none;
+			-moz-transition-property: background, color;
+			-moz-transition-duration: 0.15s;
 
 			&.active, &.active:hover {
 				background: #424242;

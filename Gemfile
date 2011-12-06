@@ -9,6 +9,8 @@ gem 'sqlite3'
 gem 'rdiscount'
 gem 'bcrypt-ruby'
 gem 'coderay'
+gem 'paperclip'
+gem 'devil'
 
 # Gems used only for assets and not required
 # in production environments by default.

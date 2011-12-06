@@ -1,41 +1,47 @@
-<%= form_for(@work) do |f| %>
-  <% if @work.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@work.errors.count, "error") %> prohibited this work from being saved:</h2>
 
-      <ul>
-      <% @work.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class='work-form'>
+	<h3><%= title %></h3>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :features %><br />
-    <%= f.text_area :features %>
-  </div>
-  <div class="field">
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br />
-    <%= f.text_field :image %>
-  </div>
-  <div class="field">
-    <%= f.label :thumbnail %><br />
-    <%= f.text_field :thumbnail %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+	<%= form_for(@work) do |f| %>
+		<% if @work.errors.any? %>
+			<div id='error_explanation'>
+				<h2><%= pluralize(@work.errors.count, 'error') %> prohibited this work from being saved:</h2>
+
+				<ul>
+				<% @work.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+				</ul>
+			</div>
+		<% end %>
+
+		<div class='field'>
+			<%= f.label :name %>
+			<%= f.text_field :name, :class => 'name' %>
+		</div>
+		<div class='field'>
+			<%= f.label :description %>
+			<%= f.text_area :description, :cols => 30, :class => 'description' %>
+		</div>
+		<div class='field'>
+			<%= f.label :url, 'URL' %>
+			<%= f.text_field :url, :class => 'url' %>
+		</div>
+		<div class='field'>
+			<%= f.label :image, (@work.image.nil? ? 'Upload image' : 'Upload a new image') %>
+			<%= f.file_field :image %>
+		</div>
+		<% if not @work.image.nil? then %>
+			<div class='field' style='margin-top: 20px'>
+				<%= f.label 'Create thumbnails' %>
+				<a id='thumb-create' href='#' title='<%= @work.get_image_size %>'>Create</a>
+				<img id='thumb-create-src' src='<%= @work.image.url %>' style='display: none' />
+			</div>
+		<% end %>
+		<div class='actions'>
+			<%= f.submit %>
+		</div>
+	<% end %>
+</div>
+
+

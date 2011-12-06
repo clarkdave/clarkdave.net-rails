@@ -1,29 +1,10 @@
 <section id='content' class='work'>
 	<div class='work-chrono'>
-		<div class='work-box'>
+		<% @works.each do |work| %>
+			<div class='work-box'>
 
-		</div>
-		<div class='work-box'>
-
-		</div>
-		<div class='work-box'>
-
-		</div>
-		<div class='work-box'>
-
-		</div>
-		<div class='work-box'>
-
-		</div>
-		<div class='work-box'>
-
-		</div>
-		<div class='work-box'>
-
-		</div>
-		<div class='work-box'>
-
-		</div>
+			</div>
+		<% end %>
 	</div>
 	<div class='work-listing'>
 
@@ -31,8 +12,9 @@
 
 		<% @works.each do |work| %>
 			<div class='work-item'>
-				<div class='picture'></div>
-				<h4><%= work.name %></h4>
+				<a href='<%= url_for work %>'><div class='picture'></div></a>
+				<h4><%= link_to work.name, work %></h4>
+				<p><%= work.tagline %></p>
 			</div>
 		<% end %>
 	</div>
