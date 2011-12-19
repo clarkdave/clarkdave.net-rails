@@ -65,10 +65,14 @@
 		background: #f5f5f5;
 		margin: 0 20px 20px 0;
 
-		.picture {
+		.picture, .picture-placeholder {
 			margin: 10px;
 			background: #333;
 			height: 200px;
+		}
+
+		.picture-placeholder {
+			background: #333;
 		}
 
 		h4 {

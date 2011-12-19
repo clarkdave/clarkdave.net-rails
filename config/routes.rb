@@ -4,6 +4,7 @@ Clarkdavedotnet::Application.routes.draw do
   get 'logout' => 'sessions#destroy', :as => 'log_out'
 
   get 'about' => 'about#index'
+  get 'contact' => 'contact#index'
 
   #get 'blog', :to => 'posts#index'
   #get 'blog/:id', :to => 'posts#show', :as => 'blog'

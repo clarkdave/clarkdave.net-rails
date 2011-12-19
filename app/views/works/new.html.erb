@@ -1,5 +1,4 @@
-<h1>New work</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', works_path %>
+<% content_for :title, 'new' %>
+<section id='content' class='work'>
+	<%= render 'form', :title => 'Create a new work entry' %>
+</section>

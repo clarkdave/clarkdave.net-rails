@@ -1,3 +1,4 @@
+<% content_for :title, @work.name %>
 <section id='content' class='work'>
 	<div class='work-detail-techs'>
 		<% if logged_in? %>
@@ -16,8 +17,12 @@
 		<div class='detail-box'>
 			<a href='#'><div class='picture' style='background-image: url(<%= @work.image.url %>)'></div></a>
 			<div class='status'>
-				<p class='date'><strong>Completed:</strong> 01/12/2010</p>
-				<p class='url'><strong>URL:</strong> http://whatever.com</p>
+				<% unless @work.completed.nil? %>
+				<p class='date'><strong>Completed:</strong> <%= @work.completed.strftime('%B %Y') %></p>
+				<% end %>
+				<% unless @work.url.nil? %>
+				<p class='url'><strong>URL:</strong> <a href='<%= @work.url %>'><%= @work.url %></a></p>
+				<% end %>
 			</div>
 			<div class='description'>
 				<%=raw @work.html_description %>

@@ -11,12 +11,25 @@ class Work < ActiveRecord::Base
 		#{:x => geom.width.to_i, :y => geom.height.to_i }
 	end
 
-
 	def banner_thumb_url
+
+		return nil unless image.exists?
+
+		path = image.path.sub /(\.[^\?]+)/, '_banner.jpg'
+
+		return nil unless File.exists(path)
+
 		image.url.sub /(\.[^\?]+)/, '_banner.jpg'
 	end
 
 	def mini_thumb_url
+		
+		return nil unless image.exists?
+
+		path = image.path.sub /(\.[^\?]+)/, '_mini.jpg'
+
+		return nil unless File.exists(path)
+
 		image.url.sub /(\.[^\?]+)/, '_mini.jpg'
 	end
 

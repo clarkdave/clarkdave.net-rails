@@ -36,10 +36,10 @@ ActiveRecord::Schema.define(:version => 20111202231905) do
 
   create_table "users", :force => true do |t|
     t.string   "email"
+    t.string   "pass"
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "pass"
   end
 
   create_table "works", :force => true do |t|
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20111202231905) do
     t.datetime "updated_at"
     t.boolean  "published",          :default => false
     t.string   "tagline"
-    t.string   "techs"
+    t.text     "techs"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"

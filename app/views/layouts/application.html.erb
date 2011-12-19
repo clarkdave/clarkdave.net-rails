@@ -5,7 +5,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>clarkdave.net</title>
+	<title>clarkdave.net<%= " | #{yield :title}" if content_for? :title %></title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz'>
@@ -25,7 +25,7 @@
 					<li><%= nav_link 'blog', 'posts' %></li>
 					<li><%= nav_link 'about', 'about' %></li>
 					<li><%= nav_link 'work', 'works' %></li>
-					<li><a href='#'>contact</a></li>
+					<li><%= nav_link 'contact', 'contact' %></li>
 				</ul>
 			</nav>
 			<% if logged_in? %>
