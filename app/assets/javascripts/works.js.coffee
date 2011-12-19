@@ -61,6 +61,7 @@ drag_drop_setup = (picker, container_w, container_h) ->
 				prev_x = e.clientX
 				prev_y = e.clientY
 
+
 post_create_thumb = (id) ->
 
 	type = ''
@@ -75,7 +76,7 @@ post_create_thumb = (id) ->
 			thumb_element = $('.banner-thumb-selector')
 
 	width = thumb_element.width()
-	height = thumb_element.width()
+	height = thumb_element.height()
 	pos_x = parseInt thumb_element.css('left')
 	pos_y = parseInt thumb_element.css('top')
 	scale = $('#thumb-creator-box .source').css('background-size').split(' ')[0]

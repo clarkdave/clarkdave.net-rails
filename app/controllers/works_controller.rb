@@ -87,7 +87,32 @@ class WorksController < ApplicationController
 
 		render :status => 501 if @work.nil?
 
-		puts @work.image.to_file
+		#puts @work.image.to_file.path
+		
+		size = @work.get_image_size
+		width = size.width
+		height = size.height
+		new_path = @work.image.to_file.path.sub /(\..+)$/, "_#{params['type']}.jpg"
+
+		#puts params
+		#puts new_path
+		
+		Devil.with_image(@work.image.to_file.path) do |img|
+
+			if params['scale'].to_i < 100 then
+				scale = params['scale'].to_f / 100
+				width = (width * scale).to_i
+				height = (height * scale).to_i
+				img.resize(width, height, :filter => Devil::SCALE_BSPLINE)
+			end
+			
+			# for some reason the 2nd param, yoff, appears to count from the bottom of the image rather
+			# than (as you'd think) the top... weird
+			img.crop params['pos_x'].to_i, height - params['pos_y'].to_i - params['height'].to_i, 
+				params['width'].to_i, params['height'].to_i
+			img.save(new_path)
+
+		end
 
 		render :nothing => true
 

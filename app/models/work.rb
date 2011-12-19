@@ -12,6 +12,15 @@ class Work < ActiveRecord::Base
 	end
 
 
+	def banner_thumb_url
+		image.url.sub /(\.[^\?]+)/, '_banner.jpg'
+	end
+
+	def mini_thumb_url
+		image.url.sub /(\.[^\?]+)/, '_mini.jpg'
+	end
+
+
 	def html_description
 		RDiscount.new(description).to_html
 	end

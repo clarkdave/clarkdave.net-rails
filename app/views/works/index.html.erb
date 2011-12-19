@@ -12,7 +12,9 @@
 
 		<% @works.each do |work| %>
 			<div class='work-item'>
-				<a href='<%= url_for work %>'><div class='picture'></div></a>
+				<a href='<%= url_for work %>'>
+					<div class='picture' style='background: url(<%= work.banner_thumb_url %>)'></div>
+				</a>
 				<h4><%= link_to work.name, work %></h4>
 				<p><%= work.tagline %></p>
 			</div>
